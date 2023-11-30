@@ -7,6 +7,7 @@ import android.view.View;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.content.Intent;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,11 +22,20 @@ public class MainActivity extends AppCompatActivity {
 
         EditText nomeTarefaText = findViewById(R.id.nomeTarefaText);
         Button buttonCriarTarefa = findViewById(R.id.buttonCriarTarefa);
+        Button btnVerTarefas = findViewById(R.id.buttonVerTarefas);
 
         buttonCriarTarefa.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String descricaoTarefa = nomeTarefaText.getText().toString();
                 tarefaService.criarTarefa(descricaoTarefa);
+            }
+        });
+
+        btnVerTarefas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ListaDeTarefas.class);
+                startActivity(intent);
             }
         });
     }
