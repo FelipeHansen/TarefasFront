@@ -2,6 +2,12 @@ package com.example.tarefasfront;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.List;
+
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -37,4 +43,31 @@ public class TarefaService {
 
         Log.d("TarefaService", "Método criarTarefa finalizado");
     }
+
+    public void listarTarefas(TarefaCallback callback) {
+        new Thread(() -> {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url("http://10.0.2.2:8080/tarefas")
+                    .get()
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                String responseData = response.body().string();
+
+                Gson gson = new Gson();
+                Type listType = new TypeToken<List<Tarefa>>(){}.getType();
+                List<Tarefa> listaTarefas = gson.fromJson(responseData, listType);
+
+                callback.onResult(listaTarefas);
+            } catch (IOException e) {
+                e.printStackTrace();
+                callback.onError(e);
+            }
+        }).start();
+    }
+
+
+
 }
