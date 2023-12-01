@@ -1,11 +1,14 @@
 package com.example.tarefasfront;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class ListaDeTarefas extends AppCompatActivity {
@@ -30,6 +33,15 @@ public class ListaDeTarefas extends AppCompatActivity {
 
             @Override
             public void onError(Exception e) {
+            }
+        });
+
+        Button btnVoltar = findViewById(R.id.btnVoltar);
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListaDeTarefas.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
