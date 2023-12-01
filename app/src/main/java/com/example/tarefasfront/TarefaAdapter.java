@@ -1,6 +1,8 @@
 package com.example.tarefasfront;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,8 +39,13 @@ public class TarefaAdapter extends ArrayAdapter<Tarefa> {
 
                 @Override
                 public void onSuccess() {
-                    remove(tarefa);
-                    notifyDataSetChanged();
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            remove(tarefa);
+                            notifyDataSetChanged();
+                        }
+                    });
                 }
 
                 @Override
