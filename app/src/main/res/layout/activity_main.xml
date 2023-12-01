@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical"
+    android:background="#ADD8E6"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,8 +16,15 @@
         android:fontFamily="sans-serif-black"
         android:padding="50dp"
         android:text="Criar Tarefas"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
 
+    <ImageView
+        android:id="@+id/iconImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/task_icon"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitCenter" />
 
     <EditText
         android:id="@+id/nomeTarefaText"
@@ -37,6 +45,7 @@
         android:layout_height="wrap_content"
         android:rotationX="-7"
         android:layout_gravity="center_horizontal"
+        android:textSize="16sp"
         android:text="Criar" />
 
     <Button
@@ -44,6 +53,7 @@
         android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:textSize="16sp"
         android:layout_gravity="center_horizontal"
         android:text="Ver Tarefas" />
 

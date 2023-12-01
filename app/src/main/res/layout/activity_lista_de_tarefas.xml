@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ADD8E6"
     android:orientation="vertical">
+
 
     <TextView
         android:id="@+id/textView"
@@ -10,14 +12,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:fontFamily="sans-serif-black"
+        android:layout_marginTop="25dp"
         android:text="Lista de Tarefas"
         android:textSize="24sp" />
 
+
     <ListView
+        android:layout_marginTop="70dp"
         android:id="@+id/listViewTarefas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"> <!-- Peso para ocupar todo o espaço disponível, exceto o do botão -->
+        android:layout_weight="1">
 
     </ListView>
 
@@ -26,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Voltar"
+        android:textSize="24sp"
         android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
