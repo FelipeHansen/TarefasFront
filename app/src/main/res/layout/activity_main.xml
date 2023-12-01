@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Página de Tarefas" />
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif-black"
+        android:padding="50dp"
+        android:text="Criar Tarefas"
+        android:textSize="24sp" />
+
 
     <EditText
         android:id="@+id/nomeTarefaText"
-        android:layout_width="match_parent"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:inputType="text"
-        android:text="" />
+        android:minHeight="48dp"
+        android:layout_gravity="center_horizontal"
+        android:text=""
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/buttonCriarTarefa"
-        android:layout_width="match_parent"
+        android:layout_width="108dp"
         android:layout_height="wrap_content"
         android:rotationX="-7"
+        android:layout_gravity="center_horizontal"
         android:text="Criar" />
 
     <Button
         android:id="@+id/buttonVerTarefas"
-        android:layout_width="match_parent"
+        android:layout_width="158dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
         android:text="Ver Tarefas" />
 
 </LinearLayout>

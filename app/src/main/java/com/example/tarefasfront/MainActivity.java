@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String descricaoTarefa = nomeTarefaText.getText().toString();
                 tarefaService.criarTarefa(descricaoTarefa);
+                nomeTarefaText.setText("");
             }
         });
 
