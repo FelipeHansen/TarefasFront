@@ -31,6 +31,10 @@ public class ListaDeTarefas extends AppCompatActivity {
                 });
             }
 
+            public void onSuccess() {
+
+            }
+
             @Override
             public void onError(Exception e) {
             }

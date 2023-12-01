@@ -1,6 +1,7 @@
 package com.example.tarefasfront;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,11 @@ import android.widget.TextView;
 import java.util.List;
 
 public class TarefaAdapter extends ArrayAdapter<Tarefa> {
+    private TarefaService tarefaService;
     public TarefaAdapter(Context context, List<Tarefa> tarefas) {
         super(context, 0, tarefas);
+        this.tarefaService = new TarefaService();
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Tarefa tarefa = getItem(position);
@@ -28,10 +30,24 @@ public class TarefaAdapter extends ArrayAdapter<Tarefa> {
 
         textViewDescricao.setText(tarefa.getDescricao());
         buttonDelete.setOnClickListener(v -> {
-            // Implemente a lógica de exclusão aqui
-            remove(tarefa); // Remove o item da lista
-            notifyDataSetChanged(); // Notifica que os dados foram alterados
+            tarefaService.deleteTarefa(tarefa.getId(), new TarefaCallback() {
+                @Override
+                public void onResult(List<Tarefa> listaTarefas) {
+                }
+
+                @Override
+                public void onSuccess() {
+                    remove(tarefa);
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    Log.e("TarefaAdapter", "Erro ao excluir tarefa", e);
+                }
+            });
         });
+
 
         return convertView;
     }

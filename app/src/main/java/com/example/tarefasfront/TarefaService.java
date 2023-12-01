@@ -68,6 +68,28 @@ public class TarefaService {
         }).start();
     }
 
+    public void deleteTarefa(int tarefaId, TarefaCallback callback) {
+        new Thread(() -> {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url("http://10.0.2.2:8080/tarefas/" + tarefaId)
+                    .delete()
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.isSuccessful()) {
+                    callback.onSuccess();
+                } else {
+                    throw new IOException("Erro ao excluir a tarefa");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                callback.onError(e);
+            }
+        }).start();
+    }
+
 
 
 }
