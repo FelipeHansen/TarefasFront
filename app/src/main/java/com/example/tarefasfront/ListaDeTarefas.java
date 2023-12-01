@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 import android.util.Log;
+import android.widget.ListView;
 
 public class ListaDeTarefas extends AppCompatActivity {
 
@@ -20,9 +21,11 @@ public class ListaDeTarefas extends AppCompatActivity {
         tarefaService.listarTarefas(new TarefaCallback() {
             @Override
             public void onResult(List<Tarefa> listaTarefas) {
-                for (Tarefa tarefa : listaTarefas) {
-                    Log.d("ListaTarefas", "Tarefa: ID=" + tarefa.getId() + ", Descrição=" + tarefa.getDescricao());
-                }
+                runOnUiThread(() -> {
+                    ListView listView = findViewById(R.id.listViewTarefas);
+                    TarefaAdapter adapter = new TarefaAdapter(ListaDeTarefas.this, listaTarefas);
+                    listView.setAdapter(adapter);
+                });
             }
 
             @Override
